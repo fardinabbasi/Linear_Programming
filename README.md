@@ -198,7 +198,8 @@ problem.plotter(position)
 <img src="/readme_images/sol.png">
 
 The best path is $1\rightarrow5\rightarrow4\rightarrow9$ with a **total cost** of 74.48.
-
+## References
+[n3_6_shortest_paths_pulp](https://transport-systems.imperial.ac.uk/tf/60008_21/n3_6_shortest_paths_pulp). (n.d.).
 ## Course Project for Operational Research
 - **Course**: Operational Research [ECE 145]
 - **Semester**: Fall 2023
