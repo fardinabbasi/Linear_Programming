@@ -1,1 +1,2 @@
-# Dynamic_Programming
+# Dynamic Programming
+## Q1: Linear Programming
