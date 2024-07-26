@@ -48,3 +48,64 @@ $$
 $$
 
 *where* $T[c,s]$ represents the transportation cost from factory $s$ to city $c$, and $x[c,s]$ denotes the amount of goods transported from from factory $s$ to city $c$.
+
+This optimization problem is solved using the Pyomo package in Python, based on the following code.
+```python
+model = pyo.ConcreteModel()
+model.x = pyo.Var(factories, cities, domain=pyo.NonNegativeReals)
+
+model.cost = pyo.Objective(
+    expr=sum(price[c][f] * model.x[f, c] for c in cities for f in factories),
+    sense=pyo.minimize
+)
+
+model.demand_constraints = pyo.ConstraintList()
+for c in cities:
+    model.demand_constraints.add(
+        sum(model.x[f, c] for f in factories) == demands[c]
+    )
+
+model.supply_constraints = pyo.ConstraintList()
+for f in factories:
+    model.supply_constraints.add(
+        sum(model.x[f, c] for c in cities) <= supply[f]
+    )
+```
+```python
+solver = pyo.SolverFactory('glpk')
+solver.solve(model)
+
+print("Optimal Solution:")
+for f in factories:
+    for c in cities:
+        print(f"{factory[f]} factory to {city[c]} City: {model.x[f, c]()}")
+
+print("\nTotal Cost:", model.cost())
+```
+The **optimal solution** is written as follows.
+| City/Factory | Arnhem | Gouda |
+|---|---|---|
+| London | 0 | 125 |
+| Berlin | 175 | 0 |
+| Maastricht | 225 | 0 |
+| Amsterdam | 0 | 250 |
+| Utrecht | 150 | 75 |
+| The Hague | 0 | 200 |
+
+with a **total cost** of 1715 euros.
+
+If the total supply of each factory is considered as shown below:
+```python
+new_supply = [600, 650]
+```
+the **optimal solution** is as follows.
+| City/Factory | Arnhem | Gouda |
+|---|---|---|
+| London | 0 | 125 |
+| Berlin | 175 | 0 |
+| Maastricht | 225 | 0 |
+| Amsterdam | 0 | 250 |
+| Utrecht | 200 | 25 |
+| The Hague | 0 | 200 |
+
+with a **total cost** of 1705 euros.
