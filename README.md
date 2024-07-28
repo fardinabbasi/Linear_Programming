@@ -1,4 +1,5 @@
-# Dynamic Programming
+# Linear Programming
+This repository presents two **linear programming** problems: a transportation problem optimizing the distribution of goods from two factories to six cities to minimize costs, and a traveling path problem finding the most cost-effective route between specified points in a city. The solutions are implemented using **Python** with the **Pyomo** and **PuLP** packages, respectively.
 ## Q1: Linear Programming
 The transportation and distribution of goods from the source to the destination is a problem that requires optimization algorithms to solve. In this context, the goal is to minimize transportation costs while meeting the constraints of available resources and the needs of each region.
 
