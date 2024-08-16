@@ -3,6 +3,8 @@ This repository presents two **linear programming** problems: a transportation p
 ## Q1: Transportation Problem
 The transportation and distribution of goods from the source to the destination is a problem that requires optimization algorithms to solve. In this context, the goal is to minimize transportation costs while meeting the constraints of available resources and the needs of each region.
 
+This problem falls under the category of **network flows** problems.
+
 Here, we illustrate the transportation problem using an example. In this example, there are two factories (`Arnhem`, `Gouda`) and six customer nodes located in six European cities, as shown in the map below. Customer nodes are marked with red labels, and factories are marked with blue labels.
 
 <img src="/readme_images/factories.jpg">
@@ -115,6 +117,8 @@ with a **total cost** of 1705 euros.
 The following image is a model of [Tehran](https://en.wikipedia.org/wiki/Tehran)'s popular places. The cost of transportation between each two places is shown on the arcs.
 <img src="/readme_images/model.jpg">
 The problem is to find the best route from an arbitrary starting point to an arbitrary destination point.
+
+This problem falls under the category of **routing** problems.
 
 Utilizing the **PuLP** package in **Python**, the following class is written to solve the problem.
 ```python
